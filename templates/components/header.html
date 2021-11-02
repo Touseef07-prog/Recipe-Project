@@ -1,0 +1,54 @@
+{% load static %}
+
+<!-- Header Area Start Here -->
+<header class="header-one">
+  <div id="header-main-menu" class="header-main-menu header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-3 col-sm-4 col-4 possition-static">
+          <div class="site-logo-mobile">
+            <a href="index.html" class="sticky-logo-light"><img src="{% static 'js/main.js' %}" src="img/logo-light.png"
+                alt="Site Logo" /></a>
+            <a href="index.html" class="sticky-logo-dark"><img src="{% static 'js/main.js' %}"
+                src="{% static 'img/logo-dark.png'%}" alt="Site Logo" /></a>
+          </div>
+          <nav class="site-nav">
+            <ul id="site-menu" class="site-menu">
+              <li>
+                <a href="{% url 'cocktail:home'%}">Home</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="
+            col-lg-4 col-md-9 col-sm-8 col-8
+            d-flex
+            align-items-center
+            justify-content-end
+          ">
+          <div class="nav-action-elements-layout1">
+            <ul>
+              {% if user.is_authenticated %}
+              <li>
+                <a href="{% url 'users:logout' %}" class="login-btn" role="button" aria-pressed="true">Logout<i
+                    class="flaticon-profile"></i></a>
+              </li>
+              {% else %}
+              <li>
+                <a href="{% url 'users:login' %}" class="login-btn" role="button" aria-pressed="true">Login<i
+                    class="flaticon-profile"></i></a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="mob-menu-open toggle-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

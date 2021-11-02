@@ -1,0 +1,128 @@
+{% extends 'index.html' %} {% load static %} {% block title %}Cocktail /
+{{recipe.recipe_name}} {% endblock title %} {% block main %}
+{% load social_share %}
+<!-- Inne Page Banner Area Start Here -->
+<section class="inner-page-banner bg-common" data-bg-image="{% static 'img/figure/inner-page-banner1.jpg'%}">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumbs-area">
+          <h1>Single Recipe</h1>
+          <ul>
+            <li>
+              <a href="{% url 'cocktail:home'%}">Home</a>
+            </li>
+            <li>Recipe Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Inne Page Banner Area End Here -->
+<!-- Single Recipe Main Banner Area Start Here -->
+<section class="single-recipe-main-banner">
+  <div class="rc-carousel nav-control-layout4" data-loop="true" data-items="5" data-margin="5" data-autoplay="true"
+    data-autoplay-timeout="5000" data-smart-speed="700" data-dots="false" data-nav="true" data-nav-speed="false"
+    data-r-x-small="1" data-r-x-small-nav="true" data-r-x-small-dots="false" data-r-x-medium="1"
+    data-r-x-medium-nav="true" data-r-x-medium-dots="false" data-r-small="1" data-r-small-nav="true"
+    data-r-small-dots="false" data-r-medium="1" data-r-medium-nav="true" data-r-medium-dots="false" data-r-large="1"
+    data-r-large-nav="true" data-r-large-dots="false" data-r-extra-large="1" data-r-extra-large-nav="true"
+    data-r-extra-large-dots="false">
+    <div class="item-figure">
+      <img src="{{recipe.recipe_image.url}}" alt="Banner" />
+    </div>
+  </div>
+</section>
+<!-- Single Recipe Main Banner Area End Here -->
+<!-- Single Recipe Without Sidebar Area Start Here -->
+<section class="single-recipe-wrap-layout2 padding-bottom-80">
+  <div class="container">
+    <div class="single-recipe-layout2">
+      <div class="ctg-name">{{recipe.category}}</div>
+      <h2 class="item-title">{{recipe.recipe_name}}</h2>
+      <div class="d-flex align-items-center justify-content-between flex-wrap mb-5">
+        <ul class="entry-meta">
+          <li class="single-meta">
+            <a href="#"><i class="far fa-calendar-alt"></i> {{recipe.date_posted|date:'M d, Y' }}
+            </a>
+          </li>
+          <li class="single-meta">
+            <a href="#"><i class="fas fa-user"></i>by
+              <span>{{recipe.user.username}} </span></a>
+          </li>
+        </ul>
+      </div>
+      <div class="item-feature">
+        <ul>
+          <li>
+            <div class="feature-wrap">
+              <div class="media">
+                <div class="feature-icon">
+                </div>
+                <div class="media-body space-sm">
+                  <div class="feature-title">Method</div>
+                  <div class="feature-sub-title"> {{recipe.recipe_method}}</div>
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="feature-wrap">
+              <div class="media">
+                <div class="feature-icon">
+                </div>
+                <div class="media-body space-sm">
+                  <div class="feature-title">Glass</div>
+                  <div class="feature-sub-title">{{recipe.glass}}</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+
+        <h1>NOTES</h1>
+        <p class="item-description">{{recipe.notes|safe}}</p>
+      </div>
+      <div class="making-elements-wrap">
+        <div class="row">
+          <div class="col-xl-6 col-12">
+            <div class="ingridients-wrap">
+              <h3 class="item-title">Ingridients</h3>
+              {{recipe.ingredients|safe}}
+            </div>
+          </div>
+          <div class="col-xl-6 col-12">
+            <div class="nutrition-wrap">
+              <h3 class="item-title">Process</h3>
+
+              {{recipe.process|safe}}
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-12">
+            <div class="nutrition-wrap">
+              <h3 class="item-title">Garnish</h3>
+
+              {{recipe.garnish|safe}}
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-12">
+            <div class="ingridients-wrap">
+              <h3 class="item-title">Characteristics</h3>
+              {{recipe.characteristics|safe}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% post_to_facebook "http://127.0.0.1:8000/single_recipe/3071" "Post to Facebook!" %}
+</section>
+<!-- Single Recipe Without Sidebar Area End Here -->
+
+{% endblock main %}
